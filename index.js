@@ -6,7 +6,7 @@ const cards = require("./createSchema");
 const deletedPackageHistory = require('./HistorySchema');
 const server = express();
 const mongoose = require('mongoose');
-const port = 1100;
+const port = process.env.port || 1100;
 
 const corsOptions = {
     origin: "*"
