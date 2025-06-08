@@ -13,7 +13,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "dev": "node dotenv/config src/index.js dotenv_config_path=env",
+    "dev": "node dotenv/config index.js dotenv_config_path=env",
     "test": "echo \"Error : no test specified\"&& exit 1",
     "start": "node index.js",
     "build": "npm i"

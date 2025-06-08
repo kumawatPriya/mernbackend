@@ -9,7 +9,6 @@ const uploadImageRoutes = require('./src/routes/uploadImage.route');
 const HolidaypackageRoutes = require('./src/routes/holidayPackage.routes');
 const DetailedpackageRoutes = require('./src/routes/PackageDetails.route');
 const PackageByInterest = require('./src/routes/PackageByInterest.route');
-
 const JWT_SECRET = process.env.JWT_SECRET || "qwertyui1256789jhgfdsaSecretKey";
 
 //  for save Signup user data in database.... =======================================
@@ -192,8 +191,8 @@ const port = process.env.PORT || 1100;
 console.log(port, 'port')
 server.listen(port, () => {
   try {
-    console.log(`Connected to server ${port}`);
-  } catch {
+    console.log(`Server listening on ${port}`);
+  } catch (error){
     console.log("Can't Connected to Server");
   }
 });

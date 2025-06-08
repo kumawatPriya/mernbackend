@@ -29,12 +29,14 @@ exports.createPackage = async (req, res) => {
 
 // for getSpecialPackage
 exports.getSpecialPackages = async (req, res) => {
+  console.log(" getSpecialPackages controller called");
   try {
     const packages = await specialPackage.find();
     res.status(200).json({
       success: true,
       data: packages,
     });
+    console.log(packages, 'Packages')
   } catch (err) {
     res.status(500).json({
       success: false,

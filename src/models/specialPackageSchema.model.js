@@ -24,4 +24,4 @@ specialPackage.set("toJSON", {
 });
 
 specialPackage.plugin(AutoIncrement, {inc_field: "id", start_seq: 101})
-module.exports = mongoose.model("specialPackages", specialPackage);
+module.exports = mongoose.model("specialPackages", specialPackage,'specialpackages');
