@@ -63,4 +63,4 @@ packageDetailsSchema.set('toJSON', {
   }
 })
 
-module.exports = mongoose.model("PackageDetails", packageDetailsSchema);
+module.exports = mongoose.model("packageDetails", packageDetailsSchema);

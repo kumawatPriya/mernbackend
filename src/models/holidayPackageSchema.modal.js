@@ -54,6 +54,6 @@ if (!mongoose.models.holidayPackages) {
 // Prevent model re-declaration during dev
 const holidayCards =
   mongoose.models.holidayPackages ||
-  mongoose.model("HolidayPackages", holidayPackagesSchema);
+  mongoose.model("HolidayPackages", holidayPackagesSchema,"holidaypackages");
 
 module.exports = holidayCards;
