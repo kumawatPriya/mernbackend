@@ -2,13 +2,14 @@ const userInfo = require("./mongooseSchema");
 const cards = require("./createSchema");
 const deletedPackageHistory = require("./HistorySchema");
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
 const server = require("./src/server");
 const specialPackageRoutes = require('./src/routes/specialPackage.routes');
 const uploadImageRoutes = require('./src/routes/uploadImage.route');
 const HolidaypackageRoutes = require('./src/routes/holidayPackage.routes');
 const DetailedpackageRoutes = require('./src/routes/PackageDetails.route');
 const PackageByInterest = require('./src/routes/PackageByInterest.route');
+const Subscribe = require('./src/routes/subscribe.route');
+const ContactUs = require('./src/routes/ContactMessage.route')
 const JWT_SECRET = process.env.JWT_SECRET || "qwertyui1256789jhgfdsaSecretKey";
 
 //  for save Signup user data in database.... =======================================
@@ -186,6 +187,8 @@ server.use('/api', HolidaypackageRoutes);
 server.use('/api', HolidaypackageRoutes);
 server.use('/api', DetailedpackageRoutes);
 server.use('/api', PackageByInterest);
+server.use('/api', Subscribe);
+server.use('/api', ContactUs);
 
 const port = process.env.PORT || 1100;
 console.log(port, 'port')

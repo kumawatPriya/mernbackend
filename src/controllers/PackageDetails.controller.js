@@ -64,3 +64,51 @@ exports.GetPackageDetails = async (req, res) => {
     });
   }
 };
+
+exports.UpdatePackageDetails = async (req, res) => {
+  const { packageId, title, subtitle, image, duration, price, destination, tagline, details } = req.body;
+
+  if (!packageId) {
+    return res.status(400).json({
+      status: 400,
+      message: "Missing packageId in request body",
+    });
+  }
+
+  try {
+    const numericId = Number(packageId);
+
+    // Update main package info
+    const updatedMain =
+      (await HolidayPackagesSchema.findOneAndUpdate({ id: numericId }, { title, subtitle, image, duration, price, destination, tagline }, { new: true })) ||
+      (await specialPackageSchema.findOneAndUpdate({ id: numericId }, { title, subtitle, image, duration, price, destination, tagline }, { new: true }));
+
+    // Update details
+    const updatedDetails = await packageDetailsSchema.findOneAndUpdate(
+      { packageId: numericId },
+      {
+    $set: {
+      'images': details.images,
+    },
+  },
+      { new: true }
+    );
+
+    return res.status(200).json({
+      status: 200,
+      message: "Package updated successfully",
+      data: {
+        ...updatedMain?.toObject(),
+        details: updatedDetails,
+      },
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      message: "Something went wrong while updating",
+      error: error.message,
+    });
+  }
+};
+
+
